@@ -8,13 +8,13 @@ Before using the OpenWeatherMap API, you need to [register here](http://home.ope
 
 ## Installation
 
-```
+```bash
 go get github.com/ayoisaiah/openweathermap
 ```
 
 Then import the package into your project:
 
-```
+```go
 import (
     github.com/ayoisaiah/openweathermap
 )
@@ -24,7 +24,7 @@ import (
 
 An API Key from OpenWeatherMap is required
 
-```
+```go
 owm, err := openweathermap.New("YOUR_API_KEY")
 if err != nil {
   log.Fatalln(err)
@@ -35,7 +35,7 @@ if err != nil {
 
 You may optionally provide a custom HTTP client:
 
-```
+```go
 owm, err := openweathermap.New("{YOUR_API_KEY}", WithHTTPClient(http.DefaultClient))
 if err != nil {
   log.Fatalln(err)
@@ -46,7 +46,7 @@ if err != nil {
 
 Or set your preferred temperature unit (one of `F` (Fahrenheit), `C` (Celsuis), `K`(Kelvin)). The default is Kelvin.
 
-```
+```go
 owm, err := openweathermap.New("{YOUR_API_KEY}", WithUnit("C"))
 if err != nil {
   log.Fatalln(err)
@@ -57,7 +57,7 @@ if err != nil {
 
 Or change the default language (English), to any of the [supported languages](https://github.com/ayoisaiah/openweathermap#supported-languages) below:
 
-```
+```go
 owm, err := openweathermap.New("{YOUR_API_KEY}", WithLang("fr"))
 if err != nil {
   log.Fatalln(err)
@@ -70,7 +70,7 @@ if err != nil {
 
 ### By city name
 
-```
+```go
 forecast, err := owm.GetCurrentByCityName("Lagos")
 if err != nil {
   fmt.Println(err)
@@ -82,7 +82,7 @@ fmt.Printf("%+v", forecast)
 
 ### By coordinates
 
-```
+```go
 forecast, err := owm.GetCurrentByCoords(&openweathermap.Coord{
   Lat: 8.5,
   Lon: 4.5,
@@ -97,7 +97,7 @@ fmt.Printf("%+v", forecast)
 
 ### By city ID
 
-```
+```go
 forecast, err := owm.GetCurrentByID(4513583)
 if err != nil {
   fmt.Println(err)
@@ -109,7 +109,7 @@ fmt.Printf("%+v", forecast)
 
 ### By Zip code
 
-```
+```go
 forecast, err := owm.GetCurrentByZipCode(94040, "us")
 if err != nil {
   fmt.Println(err)
@@ -127,7 +127,7 @@ English - en, Russian - ru, Italian - it, Spanish - es (or sp), Ukrainian - uk (
 
 Ensure the `OPENWEATHERMAP_KEY` environmental variable is set before running the tests
 
-```
+```bash
 env OPENWEATHERMAP_KEY="YOUR_API_KEY" go test
 ```
 
