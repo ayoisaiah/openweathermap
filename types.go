@@ -1,7 +1,7 @@
 package openweathermap
 
-// Coord holds the longitude and latitude for the requested location
-type Coord struct {
+// Coords holds the longitude and latitude for the requested location
+type Coords struct {
 	Lon float64 `json:"lon"`
 	Lat float64 `json:"lat"`
 }
@@ -48,7 +48,7 @@ type Sys struct {
 
 // CurrentWeatherData describes the current weather information for a location
 type CurrentWeatherData struct {
-	Coord      Coord     `json:"coord"`
+	Coord      Coords    `json:"coord"`
 	Weather    []Weather `json:"weather"`
 	Base       string    `json:"base"`
 	Main       Main      `json:"main"`

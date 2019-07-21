@@ -8,14 +8,14 @@ import (
 type query struct {
 	Name   string
 	ID     int
-	Coords *Coord
+	Coords *Coords
 }
 
 var citiesTable = []query{
 	{
 		Name: "Ilorin",
 		ID:   2337639,
-		Coords: &Coord{
+		Coords: &Coords{
 			Lat: 8.5,
 			Lon: 4.5,
 		},
@@ -23,7 +23,7 @@ var citiesTable = []query{
 	{
 		Name: "Hamilton County",
 		ID:   4513583,
-		Coords: &Coord{
+		Coords: &Coords{
 			Lat: 39.183392,
 			Lon: -84.533279,
 		},
@@ -31,7 +31,7 @@ var citiesTable = []query{
 	{
 		Name: "Lagos",
 		ID:   2332459,
-		Coords: &Coord{
+		Coords: &Coords{
 			Lat: 6.45306,
 			Lon: 3.39583,
 		},
@@ -45,7 +45,7 @@ func TestGetCurrentByCoords(t *testing.T) {
 	}
 
 	for _, city := range citiesTable {
-		data, err := owm.GetCurrentByCoords(*city.Coords)
+		data, err := owm.GetCurrentByCoords(city.Coords)
 		if err != nil {
 			t.Error(err)
 		}

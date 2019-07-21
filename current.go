@@ -44,7 +44,7 @@ func (owm *OpenWeatherMap) GetCurrentByCityName(location string) (*CurrentWeathe
 
 // GetCurrentByCoords retrieves the current weather data for the provided
 // coordinates
-func (owm *OpenWeatherMap) GetCurrentByCoords(coords Coord) (*CurrentWeatherData, error) {
+func (owm *OpenWeatherMap) GetCurrentByCoords(coords *Coords) (*CurrentWeatherData, error) {
 	url := fmt.Sprintf("%s/weather?lat=%f&lon=%f&units=%s&appid=%s", apiURL, coords.Lat, coords.Lon, owm.unit, owm.key)
 	return getForecast(owm, url)
 }
